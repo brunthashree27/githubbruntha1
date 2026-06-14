@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic page setup -->
+  <meta charset="UTF-8" />
+  <!-- Makes the site mobile-friendly -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My To-Do List</title>
+
+  <!-- Link to our CSS file for styling -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Main wrapper that centers everything on the page -->
+  <div class="container">
+
+    <!-- App Title Area -->
+    <div class="header">
+      <h1>📝 My To-Do List</h1>
+      <p>Stay organized, one task at a time.</p>
+    </div>
+
+    <!-- Input Area: where the user types a new task -->
+    <div class="input-area">
+      <!-- Text box for entering a task -->
+      <input
+        type="text"
+        id="taskInput"
+        placeholder="Add a new task..."
+        maxlength="100"
+      />
+      <!-- Button to add the task -->
+      <button id="addBtn" onclick="addTask()">Add</button>
+    </div>
+
+    <!-- Task Counter: shows how many tasks are pending -->
+    <div class="task-info">
+      <span id="taskCount">0 tasks remaining</span>
+    </div>
+
+    <!-- Task List: tasks will appear here dynamically using JavaScript -->
+    <ul id="taskList"></ul>
+
+    <!-- Empty State Message: shown when there are no tasks -->
+    <div class="empty-state" id="emptyState">
+      <p>🎉 No tasks yet! Add one above.</p>
+    </div>
+
+  </div>
+
+  <!-- Link to our JavaScript file (placed at the bottom so HTML loads first) -->
+  <script src="script.js"></script>
+
+</body>
+</html>

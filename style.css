@@ -1,0 +1,248 @@
+/* =============================================
+   GLOBAL RESET & BASE STYLES
+   Removes default spacing browsers add
+   ============================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Makes sizing easier to control */
+}
+
+/* Body: sets the background and font for the whole page */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;      /* Full screen height */
+  display: flex;
+  align-items: center;    /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  padding: 20px;          /* Space on small screens */
+}
+
+/* =============================================
+   MAIN CONTAINER (the white card)
+   ============================================= */
+.container {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 520px;       /* Never wider than 520px */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* =============================================
+   HEADER SECTION (Title + subtitle)
+   ============================================= */
+.header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  color: #4a3f8f;         /* Deep purple to match background theme */
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.header p {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* =============================================
+   INPUT AREA (text box + button side by side)
+   ============================================= */
+.input-area {
+  display: flex;          /* Puts input and button in a row */
+  gap: 10px;              /* Space between them */
+  margin-bottom: 14px;
+}
+
+/* The text input box */
+#taskInput {
+  flex: 1;                /* Takes up all remaining space */
+  padding: 13px 16px;
+  border: 2px solid #e0d9f5;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  outline: none;          /* Removes default browser outline */
+  color: #333;
+  transition: border 0.2s;
+}
+
+/* When the user clicks on the input, highlight it */
+#taskInput:focus {
+  border-color: #764ba2;
+}
+
+/* The Add button */
+#addBtn {
+  padding: 13px 22px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;        /* Shows a pointer when hovered */
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+/* Hover effect on the Add button */
+#addBtn:hover {
+  transform: translateY(-2px);     /* Slight lift */
+  box-shadow: 0 6px 20px rgba(118, 75, 162, 0.4);
+}
+
+/* Click effect on the Add button */
+#addBtn:active {
+  transform: translateY(0px);
+}
+
+/* =============================================
+   TASK COUNTER (e.g. "3 tasks remaining")
+   ============================================= */
+.task-info {
+  font-size: 0.82rem;
+  color: #999;
+  margin-bottom: 16px;
+  padding-left: 2px;
+}
+
+/* =============================================
+   TASK LIST (the <ul> holding all tasks)
+   ============================================= */
+#taskList {
+  list-style: none;       /* Removes bullet points */
+  display: flex;
+  flex-direction: column; /* Stack tasks vertically */
+  gap: 10px;              /* Space between each task */
+}
+
+/* =============================================
+   INDIVIDUAL TASK ITEM (each <li>)
+   ============================================= */
+#taskList li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8f6ff;
+  border: 1.5px solid #e8e2f8;
+  border-radius: 12px;
+  padding: 14px 16px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  animation: slideIn 0.25s ease; /* Animate when added */
+}
+
+/* Slight hover effect on task cards */
+#taskList li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(118, 75, 162, 0.12);
+}
+
+/* The checkbox (circle button) inside each task */
+.check-btn {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;        /* Stops it from shrinking */
+  border-radius: 50%;     /* Makes it a circle */
+  border: 2px solid #c5b8f0;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: transparent;     /* Checkmark hidden by default */
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+/* When task is completed, style the checkbox */
+.check-btn.done {
+  background: #667eea;
+  border-color: #667eea;
+  color: white;           /* Shows the ✓ checkmark */
+}
+
+/* The task text label */
+.task-text {
+  flex: 1;                /* Takes up remaining width */
+  font-size: 0.95rem;
+  color: #444;
+  word-break: break-word; /* Prevents long text from overflowing */
+  transition: color 0.2s;
+}
+
+/* Strike-through style when task is completed */
+.task-text.done {
+  text-decoration: line-through;
+  color: #bbb;
+}
+
+/* The delete button (trash icon) */
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 8px;
+  transition: background 0.15s, transform 0.15s;
+  color: #ccc;
+}
+
+/* Hover: show red color on delete button */
+.delete-btn:hover {
+  background: #fff0f0;
+  color: #e55;
+  transform: scale(1.15);
+}
+
+/* =============================================
+   EMPTY STATE (shown when no tasks exist)
+   ============================================= */
+.empty-state {
+  text-align: center;
+  padding: 30px 0;
+  color: #c0b8d8;
+  font-size: 0.9rem;
+  display: none;          /* Hidden by default; shown by JS */
+}
+
+/* =============================================
+   SLIDE-IN ANIMATION for new tasks
+   ============================================= */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =============================================
+   RESPONSIVE DESIGN (for small screens)
+   ============================================= */
+@media (max-width: 480px) {
+  .container {
+    padding: 28px 20px;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+  }
+
+  #taskInput {
+    font-size: 0.9rem;
+  }
+
+  #addBtn {
+    padding: 13px 16px;
+    font-size: 0.9rem;
+  }
+}
